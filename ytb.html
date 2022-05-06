@@ -1,0 +1,261 @@
+<html>
+
+<head>
+  <title></title>
+  <meta charset="utf-8" />
+  <meta name="viewport"
+    content="width=device-width, initial-scale=1, minimum-scale=1.0, maximum-scale=1.0, shrink-to-fit=no" />
+  <style>
+    @import url("https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.0.0-alpha3/css/bootstrap.min.css");
+    @import url("https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css");
+    @import url("https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap");
+
+    * {
+      font-family: "Georgia";
+    }
+  </style>
+  <script type="text/javascript" src="papaparse.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.bundle.min.js"
+ src="https://kit.fontawesome.com/3c72e47e8c.js" crossorigin="anonymous">
+ </script>
+</head>
+
+<body style="background-color: black">
+  <div class="container" style="
+        color: white;
+        font-size: xx-large;
+        font-weight: bold;
+        text-align: center;
+        padding-top: 30px;
+      ">
+    Menta
+  </div>
+
+  <div class="container" style="
+        color: white;
+        font-size: large;
+        font-weight: bold;
+        text-align: center;
+        padding-top: 15px;
+      ">
+    LILI's FILM #3 - LISA Dance Performance Video
+  </div>
+
+  <div class="container">
+  <figure  id="videoContainer">
+    <div class="video-player" style="margin-top:10px">
+    <video class="video" id="video" width="700" height="380" controls preload="metadata"\=>
+      <source src="./vdo/Lisa.mp4" type="video/mp4" />
+      <source src="./vdo/Lisa.mp4" type="video/webm" />
+      <source src="./vdo/Lisa.mp4" type="video/ogg">
+      /> Your browser does not support the video tag.
+    </video>
+
+    <video class="video" id="video" width="300" height="380" controls style="margin-left: 100px" preload="metadata"\=>
+      <source src="./vdo/Lisa.mp4" type="video/mp4" />
+      <source src="./vdo/Lisa.mp4" type="video/webm" />
+      <source src="./vdo/Lisa.mp4" type="video/ogg">
+      /> Your browser does not support the video tag.
+    </video>
+
+    <div class="container text-white" style="margin-bottom: 20px; margin-top: 10px; text-align: center;">
+      <ul id="video-controls" class="controls" >
+        <button class="text-white" id="playpause" type="button" style="font-size: 20px; margin-left: 60px; background-color:black; border:none;">
+          <i class="fas fa-play"></i><i class="fas fa-pause"></i>
+        </button>
+    
+        <button class="text-white" id="stop" type="button" style="font-size: 20px; margin-left: 30px; background-color:black; border:none;"><i class="fas fa-stop"></i></button>
+       
+        <button class="text-white" id="mute" type="button" style="font-size: 30px; margin-left: 22px; background-color:black; border:none;"><i class="fas fa-volume-mute"></i></button>
+       
+        
+        <li class="progress" style="width: 300px; color: brown; margin-left: 40%;">
+          <progress id="progress" value="0" min="0">
+            <span id="progress-bar"></span>
+          </progress>
+        </li>
+          <span class="current" style="margin-right: 16%; margin-left:4%; color: aliceblue;"> 0:00</span>
+        <span class="duration">0:00</span>
+    
+        
+      </ul>
+      </div>
+
+    </div>
+    
+  </figure>
+</div>
+
+  <div class="container text-white" style="font-size: 30px">
+    <button onclick="rotate();" class=" text-white" style="background-color:black; border:none;">
+      <i class="far fa-hourglass" style="transform: rotate(-90deg) "></i>
+    </button>
+
+
+
+
+    <button class="text-white" style="margin-left: 60px; background-color:black; border:none;">
+      <i class="fas fa-bell"></i>
+    </button>
+
+
+    <i class="fas fa-retweet" style="margin-left: 60px;"></i>
+    <input type="text"
+      style="width: 50px; height: 30px; border-radius: 10px; border: none; background-color: aliceblue; text-align: center; font-size: 17px; margin-left: 15px;"
+      placeholder="start"></input>
+    <span> : </span>
+    <input type="text"
+      style="width: 50px; height: 30px; border-radius: 10px; border: none; background-color: aliceblue; text-align: center; font-size: 17px;"
+      placeholder="end"></input>
+
+    <i class="fas fa-tachometer-alt" style="margin-left: 60px;"></i>
+    <button onclick="Speed03()"
+      style="width: 50px; height: 30px; border-radius: 10px; border: none; background-color: aliceblue; text-align: center; font-size: 17px; margin-left: 15px;">0.3
+      x</button>
+    <button onclick="Speed05()"
+      style="width: 50px; height: 30px; border-radius: 10px; border: none; background-color: aliceblue; text-align: center; font-size: 17px; margin-left: 5px;">0.5
+      x</button>
+    <button onclick="Speed07()"
+      style="width: 50px; height: 30px; border-radius: 10px; border: none; background-color: aliceblue; text-align: center; font-size: 17px; margin-left: 5px;">0.7
+      x</button>
+    <button onclick="Speed1()"
+      style="width: 50px; height: 30px; border-radius: 10px; border: none; background-color: aliceblue; text-align: center; font-size: 17px; margin-left: 5px;">1
+      x</button>
+    <button onclick="Speed15()"
+      style="width: 50px; height: 30px; border-radius: 10px; border: none; background-color: aliceblue; text-align: center; font-size: 17px; margin-left: 5px;">1.5
+      x</button>
+    <button onclick="Speed2()"
+      style="width: 50px; height: 30px; border-radius: 10px; border: none; background-color: aliceblue; text-align: center; font-size: 17px; margin-left: 5px;">2
+      x</button>
+
+    <a href="https://www.youtube.com/watch?v=SfzTczaSxw8" class="btn decoration-none text-white "
+      style="margin-left: 30px;">
+      <i class="fab fa-youtube" style="font-size:22px;"></i>
+      <span style="font-size:20px; margin-left: 10px;">play this on youtube.com</span>
+    </a>
+
+  </div>
+
+  <div class="container" style="text-align: center; ">
+
+    <div class="container" style="width:1000px; height: 200px; text-align: center; overflow: scroll; white-space: nowrap;" id="calby"></div>
+    <!-- <script>
+      var x =" ";
+      for (var i=1; i<=15; i++){
+        x = x + '<div class="col-2 text-white" style="margin-top: 30px; display: inline-block;"><div style="background-color : brown; height: 170px; width: 140; "><img src="./img/lisa1.png" style="margin-bottom:3%;"><div class="container" style="text-align: center;"><span style="font-size: 20px; margin-right: 5%;">' + i +'</span><button class="hov text-decoration-none text-white" type="button" onclick="change.call(this)" style="background: none; " ><i  class="far fa-check-circle" style="font-size: 25px;" id="check"></i></button><button class="hov text-decoration-none text-white" type="button" data-bs-toggle="modal" data-bs-target="#report"><i class="fas fa-flag" style=" font-size: 15px; margin-left: 20%;"></i></button></div></div></div>'
+      }
+      document.getElementById("calby").innerHTML = x;
+    </script> -->
+     
+
+  </div>
+
+  <div class="modal fade" id="report" tabindex="-1" aria-labelledby="report">
+    <div class="modal-dialog">
+      <div class="modal-content">
+
+        <div class="modal-header">
+          <h5 class="modal-title" id="loginModalLabel" style="text-align: left;">Report Problem</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+
+        <div class="modal-body" style="padding-bottom: 10%; height: 300px;">
+
+          <input type="text" id="reportTitle"
+            style=" border-radius: 15px; position: absolute; right: 25%; text-align: center; border-width: 1px; padding: 4px 40px; margin-bottom: 20px;"
+            placeholder="Title"></input>
+
+            <input type="text" id="reportContent"
+            style=" border-radius: 15px; position: absolute; right: 25%; text-align: top; border-width: 1px; padding: 20px 40px; height: 200px; margin-top: 60px;"
+            placeholder="Fill your problem here"></input>
+        </div>
+
+        <button class="btn" type="button"
+          style="border-radius: 50px; color: brown; font-size:medium; width: 100px; font-weight: bold;  margin-left: 40%; margin-bottom: 10px;">Submit
+        </button>
+
+      </div>
+    </div>
+  </div>
+  </div>
+
+<input type="file" id="uploadfile" accept=".csv">
+<button id="uploadconfirm">Upload file</button>
+
+input
+
+
+</body>
+
+
+
+<style>
+  #videoElement {
+    transform: rotateY(180deg);
+    -webkit-transform: rotateY(180deg);
+    /* Safari and Chrome */
+    -moz-transform: rotateY(180deg);
+    /* Firefox */
+  }
+
+  img {
+    max-width: 100%;
+    max-height: 100%;
+  }
+
+  .hide {
+    display: none;
+  }
+
+  .hov {
+    background: none;
+    border: none;
+  }
+
+  .hov:hover+.hide {
+    display: block;
+    color: brown;
+    background-color: burlywood;
+    margin-top: 10%;
+  }
+  .controls .progress {
+   cursor:pointer;
+   width:75.390625%;
+}
+
+  .controls progress {
+    display:block;
+    width:100%;
+    height:81%;
+    margin-top:0.125rem;
+    border:none;
+    color:brown;
+    -moz-border-radius:2px;
+    -webkit-border-radius:2px;
+    border-radius:2px;
+}
+.controls progress[data-state="fake"] {
+   background:#e6e6e6;
+   height:65%;
+}
+.controls progress span {
+   width:0%;
+   height:100%;
+   display:inline-block;
+   background-color:brown;
+}
+
+.controls progress::-moz-progress-bar {
+   background-color:brown;
+}
+
+.controls progress::-webkit-progress-value {
+   background-color:brown;
+}
+
+
+</style>
+
+<script src="video.js"></script>
+
+</html>
